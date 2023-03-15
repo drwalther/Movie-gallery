@@ -1,5 +1,5 @@
 function Main () {
-	return <main>Hello</main>
+	return <main className="container content">Hi</main>
 }
 
 export {Main};
