@@ -4,12 +4,17 @@ class Search extends React.Component {
 
 	state = {
 		search: '',
+		type: 'all'
 	}
 
 	handleKey = (event) => {
 		if (event.key === 'Enter') {
 			this.props.searchMovies(this.state.search);
 		}
+	}
+
+	handleFilter = (event) => {
+		this.setState({type: event.target.dataset.type})
 	}
 
 	render() {
@@ -24,8 +29,23 @@ class Search extends React.Component {
 			onKeyDown={this.handleKey}
 			/>
 			<button className="btn search-btn" onClick={() => this.props.searchMovies(this.state.search)}>Search</button>          
-          </div>        
+          </div>
+		  <div>
+		  	<label>
+				<input type="checkbox" class="filled-in" data-type="all" onChange={this.handleFilter}/>
+				<span>All</span>
+      		</label>
+			  <label>
+				<input type="checkbox" class="filled-in" data-type="movie" onChange={this.handleFilter}/>
+				<span>Movies</span>
+      		</label>
+			  <label>
+				<input type="checkbox" class="filled-in" data-type="series" onChange={this.handleFilter}/>
+				<span>Series</span>
+      		</label>
+			</div>        
       	</div>
+		
 	}
 }
 
